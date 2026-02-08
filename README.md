@@ -1,18 +1,17 @@
 # ArguUI — UI That Argues Back
 
-ArguUI is an intent-driven React application where the UI does not blindly obey user actions.  
-Instead, it questions, explains, rejects, or accepts actions based on user intent.
-
-My project explores generative UI behavior rather than static UI flows.
+ArguUI is an intent-driven React application which questions, explains, rejects, 
+or accepts actions based on user intent rather than blindly obeying user actions.
+- My project explores generative UI behavior rather than static UI flows.
 
 ----
 
 # Problem Statement
 
 Most modern user interfaces:
-- Always obey clicks and submissions
-- Treat all users and actions the same
-- Do not question rushed, unsafe, or unclear actions
+- They always obey clicks and submissions
+- Thet treat all users and actions the same
+- They do not question rushed, unsafe, or unclear actions
 
 This often leads to:
 - Accidental submissions
@@ -23,11 +22,11 @@ This often leads to:
 
 # Solution
 
-ArguUI introduces a UI that argues back.
+My prject **ArguUI** introduces a UI that argues back.
 
 Instead of fixed flows:
 - Users express intent in natural language
-- The system decides *how the UI should respond*
+- The system decides how the UI should respond
 - Different UI components are rendered dynamically
 
 The UI may:
@@ -48,7 +47,7 @@ UI Component Selection
 ↓
 Rendered UI Response
 
-The intent-routing logic is intentionally isolated so it can be:
+The intent routing logic is intentionally isolated so it can be:
 - Rule-based today
 - AI-powered tomorrow
 
@@ -67,7 +66,7 @@ The intent-routing logic is intentionally isolated so it can be:
 
 # Sponsor Tool: Tambo (Generative UI)
 
-This project is architected around Tambo’s Generative UI philosophy.
+This project follows Tambo’s Generative UI philosophy.
 
 Instead of hard-coded UI flows, ArguUI introduces an intent-routing layer
 that dynamically decides which UI component should be rendered.
@@ -100,9 +99,9 @@ and component selection, which is the core value proposition of Tambo.
 ```bash
 npm install
 npm run dev
-
-Open http://localhost:5173  
 ```
+Open http://localhost:5173  
+
 ----
 
 # Try this inputs
