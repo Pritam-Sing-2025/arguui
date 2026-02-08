@@ -1,74 +1,74 @@
 import { useState } from 'react';
 import './App.css'
+import {getUIComponent} from './tambo/uiRouter.js';
 
-import Accept from './components/accept.jsx';
-import Argue from './components/argue.jsx';
-import Reject from './components/reject.jsx';
-import Explain from './components/explain.jsx';
+// import Accept from './components/accept.jsx';
+// import Argue from './components/argue.jsx';
+// import Reject from './components/reject.jsx';
+// import Explain from './components/explain.jsx';
 
 function App() {
-  const [uiState, setUiState] = useState(null); //accept, argue, reject, explain
   const [input, setInput] = useState("");
-
-  const decideUI = (input) => {
-    const lower = input.trim().toLowerCase();
-    if (!lower) {
-      setUiState('reject');
-      return;
-    }
-    if (lower.includes("submit") || lower.includes("ok")) {
-      setUiState("accept");
-    }
-    else if (lower.includes("why") || lower.includes("explain")) {
-      setUiState("explain");
-    }
-    else if (lower.includes("don't care") || lower.includes("dont care") || lower.includes("force")) {
-      setUiState("argue");
-    } 
-    else {
-      setUiState("reject");
-    }
+  const [SelectedUI, setSelectedUI] = useState(null);
+  const handleSubmit = async() => {
+    const UI = getUIComponent(input);
+    setSelectedUI(() => UI);
   };
 
-  const renderUI = () => {
-    if (!uiState) {
-      return <p style={{opacity: 0.6}}>Waiting for intent...</p>;
-    }
-    switch (uiState) {
-      case "accept":
-        return <Accept />
-      case "argue":
-        return <Argue />
-      case "reject":
-        return <Reject />
-      case "explain":
-        return <Explain />
-      default:
-        return null;
-    }
-  };
+  // const decideUI = (input) => {
+  //   const lower = input.trim().toLowerCase();
+  //   if (!lower) {
+  //     setUiState('reject');
+  //     return;
+  //   }
+  //   if (lower.includes("submit") || lower.includes("ok")) {
+  //     setUiState("accept");
+  //   }
+  //   else if (lower.includes("why") || lower.includes("explain")) {
+  //     setUiState("explain");
+  //   }
+  //   else if (lower.includes("don't care") || lower.includes("dont care") || lower.includes("force")) {
+  //     setUiState("argue");
+  //   } 
+  //   else {
+  //     setUiState("reject");
+  //   }
+  // };
+
+  // const renderUI = () => {
+  //   if (!uiState) {
+  //     return <p style={{opacity: 0.6}}>Waiting for intent...</p>;
+  //   }
+  //   switch (uiState) {
+  //     case "accept":
+  //       return <Accept />
+  //     case "argue":
+  //       return <Argue />
+  //     case "reject":
+  //       return <Reject />
+  //     case "explain":
+  //       return <Explain />
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   return (
         <div style={{padding: "40px", fontFamily: "sans-serif"}}>
-          <h1>ArgueUI Demo</h1>
+          <h1>ArgueUI</h1>
           <input
             type='text'
-            placeholder='Tell UI what u wanna do..'
+            placeholder='Tell me what u wanna do..'
             value={input}
             onChange={(e) => setInput(e.target.value)}
             style={{width: "100%", padding: "10px", marginBottom: "10px"}}
           />
-          <button 
-            onClick={() => {
-              console.log("Input: ", input);
-              decideUI(input);
-            }}
-          >
+          <button onClick={(handleSubmit)}>          
             Submit 
           </button>
           <div style={{marginTop: "20px"}}>
-            {renderUI()}
-          </div>
+            {SelectedUI ? <SelectedUI /> : <p>Waiting for input..</p>}
+          </div> 
 
 
 
